@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Artwork {
+  id          String   @id @default(cuid())
+  drawingInstructions Json     // Store the drawing instructions as JSON
+  description String   @db.Text
+  reflection  String?  @db.Text
+  votes       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  pixelCount  Int      @default(0)
+  
+  // Additional metadata
+  phase       String   @default("completed")
+  complexity  Float    @default(0)
+  
+  // Relationships
+  userVotes   UserVote[]
+
+  @@index([createdAt])
+  @@index([votes])
+}
+
+model UserVote {
+  id        String   @id @default(cuid())
+  userId    String   // Store the user ID
+  artworkId String   // Reference to the artwork
+  artwork   Artwork  @relation(fields: [artworkId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, artworkId]) // Prevent duplicate votes
+  @@index([artworkId])
+}
+
+model Stats {
+  id             String   @id @default("global")
+  totalCreations Int      @default(0)
+  totalPixels    Int      @default(0)
+  totalVotes     Int      @default(0)
+  lastUpdateAt   DateTime @updatedAt
+} 

@@ -1,0 +1,36 @@
+{
+  "name": "untitled55",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "build": "npm install --legacy-peer-deps && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "node prisma/seed.js",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@heroicons/react": "^2.1.5",
+    "@prisma/client": "^5.22.0",
+    "axios": "^1.7.7",
+    "bufferutil": "^4.0.8",
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.5",
+    "framer-motion": "^11.11.11",
+    "lru-cache": "^10.4.3",
+    "next": "15.0.3",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-query": "^3.39.3",
+    "utf-8-validate": "^6.0.5",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "force": "^0.0.3",
+    "postcss": "^8",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.1"
+  }
+}

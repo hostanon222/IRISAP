@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 2px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Glowing effects */
+.glow {
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.glow:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Matrix-like text effect */
+.matrix-text {
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  }
+  to {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  }
+}
+
+/* Cool gradient backgrounds */
+.gradient-dark {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Smooth hover transitions */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Custom scrollbar with glow effect */
+.scrollbar-glow::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.scrollbar-glow::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+}
+
+/* Terminal-style text animation */
+.typing-text {
+  overflow: hidden;
+  border-right: 2px solid #00ff00;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00ff00 }
+}
